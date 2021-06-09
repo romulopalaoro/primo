@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./primos.css";
+import {verificaSeEhPrimo} from "../../controller"
 
 const Primos = () => {
   const [string , setString ]=useState("");
@@ -10,7 +11,7 @@ const Primos = () => {
   useEffect(() => {
   }, [string]);
 
-  function verificaPrimos(){
+  function verificaPosicao(){
     numeroDesejado=document.querySelector(".inputPosition").value;
     arrayPrimos.push(2);
 
@@ -35,26 +36,13 @@ const Primos = () => {
     document.querySelector(".inputPosition").value = "";
     arrayPrimos=[];
   }
-
-  function verificaSeEhPrimo(num){
-    let ehprimo = false;
-    for(let i=2;i<num;i++){
-      if(num%i===0){
-        ehprimo= false;
-        break;
-      }else{
-        ehprimo= true;
-      }
-    }
-    return ehprimo;
-  }
-
+  
   return (
     <div className="container1">
       <h3 htmlFor="position">Escreva a posição do número primo desejado:</h3>
       <input className="inputPosition" type="text" name="primo" />
       <div className="divButton">
-        <button className="buttons" onClick={verificaPrimos} >Procurar</button>
+        <button className="buttons" onClick={verificaPosicao} >Procurar</button>
       </div>
       {string?<h4 Style="color: rgb(96, 78, 199)"> {string} </h4> : <h4></h4>}
     </div>
